@@ -479,11 +479,6 @@
   }
 
   /* ---------- ABOUT / ORWELL PAGE ---------- */
-  /* Note: grid layout for these sections is applied inline to the .wrap
-     div in the HTML itself (image + text columns). These section rules
-     intentionally do NOT declare their own grid, to avoid a conflicting
-     nested-grid layout that squeezes the inner content and causes text
-     to overlap the image. */
   .about-hero{
     padding:70px 0 60px;
     border-bottom:1px solid var(--rule);
@@ -659,6 +654,15 @@
     nav{ gap:20px; }
     .note-row{ grid-template-columns:1fr; gap:6px; }
     .note-tag{ order:3; }
+    /* these sections' grid columns are set inline in the HTML on their
+       .wrap div — !important is required here to override an inline style */
+    .about-hero .wrap,
+    .about-body .wrap,
+    .book-body .wrap{
+      grid-template-columns:1fr !important;
+      gap:32px !important;
+    }
+    .about-portrait{ max-width:320px; }
   }
   @media (max-width:560px){
     .wrap{ padding:0 20px; }

@@ -23,6 +23,32 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,700;0,900&family=Archivo+Expanded:wght@700;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
+<style>
+  .notes-month{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--red);
+    margin:36px 0 4px;
+  }
+  .notes-month:first-child{ margin-top:0; }
+  .note-source{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:0.04em;
+    color:var(--ink-faint);
+    margin-top:6px;
+  }
+  .note-source a{ border-bottom:1px solid var(--ink-faint); }
+  .note-source a:hover{ color:var(--red); border-color:var(--red); }
+  .notes-empty, .notes-loading{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--ink-faint);
+    padding:40px 0;
+  }
+</style>
 </head>
 <body>
 
@@ -56,47 +82,8 @@
 
 <section class="section" style="padding-top:0;">
   <div class="wrap">
-    <div class="notes-list">
-      <div class="note-row">
-        <div class="note-date">20.08.26</div>
-        <div class="note-text">A retailer's "loyalty app" now logs <b>walking speed through the aisles</b>. Nobody asked. Nobody needed to.</div>
-        <div class="note-tag">Corporate</div>
-      </div>
-      <div class="note-row">
-        <div class="note-date">14.08.26</div>
-        <div class="note-text">A city council votes to expand license-plate readers, citing a <b>17% drop in an unrelated crime category</b>.</div>
-        <div class="note-tag">State</div>
-      </div>
-      <div class="note-row">
-        <div class="note-date">09.08.26</div>
-        <div class="note-text">A publisher quietly revises a backlist title's language for a new edition. <b>The old edition is no longer printed.</b></div>
-        <div class="note-tag">Language</div>
-      </div>
-      <div class="note-row">
-        <div class="note-date">02.08.26</div>
-        <div class="note-text">A browser update adds a feature described as "for your safety." <b>It cannot be turned off.</b></div>
-        <div class="note-tag">Technology</div>
-      </div>
-      <div class="note-row">
-        <div class="note-date">27.07.26</div>
-        <div class="note-text">A school district begins scanning student devices for "concerning language" in private messages. <b>Parents were notified after the fact.</b></div>
-        <div class="note-tag">State</div>
-      </div>
-      <div class="note-row">
-        <div class="note-date">19.07.26</div>
-        <div class="note-text">An airline's new "biometric boarding" becomes the default option. <b>Opting out adds an average of 40 minutes to the process.</b></div>
-        <div class="note-tag">Corporate</div>
-      </div>
-      <div class="note-row">
-        <div class="note-date">11.07.26</div>
-        <div class="note-text">A streaming platform removes a documentary in one region only, citing "content licensing." <b>No further explanation was given.</b></div>
-        <div class="note-tag">Censorship</div>
-      </div>
-      <div class="note-row">
-        <div class="note-date">03.07.26</div>
-        <div class="note-text">A insurer's new discount program requires a wearable that reports sleep, heart rate, and location. <b>Declining raises the premium.</b></div>
-        <div class="note-tag">Corporate</div>
-      </div>
+    <div id="notes-root" class="notes-list">
+      <div class="notes-loading">Loading records…</div>
     </div>
   </div>
 </section>
@@ -114,6 +101,65 @@
     <div class="footer-quiet">Fiction warned us. This is the record of whether we listened.</div>
   </div>
 </footer>
+
+<script>
+  const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+  function escapeAttr(str){
+    return String(str).replace(/"/g, "&quot;");
+  }
+
+  async function loadNotes(){
+    const root = document.getElementById('notes-root');
+    try{
+      const res = await fetch('/data/notes.json', { cache: 'no-store' });
+      if(!res.ok) throw new Error('fetch failed');
+      const notes = await res.json();
+
+      if(!Array.isArray(notes) || notes.length === 0){
+        root.innerHTML = '<div class="notes-empty">No records filed yet.</div>';
+        return;
+      }
+
+      // newest first
+      notes.sort((a,b) => new Date(b.date) - new Date(a.date));
+
+      let html = '';
+      let lastMonthKey = '';
+
+      notes.forEach(note => {
+        const d = new Date(note.date + 'T00:00:00');
+        const monthKey = d.getFullYear() + '-' + d.getMonth();
+        if(monthKey !== lastMonthKey){
+          html += `<div class="notes-month">${MONTHS[d.getMonth()]} ${d.getFullYear()}</div>`;
+          lastMonthKey = monthKey;
+        }
+
+        const dd = String(d.getDate()).padStart(2,'0');
+        const mm = String(d.getMonth()+1).padStart(2,'0');
+        const yy = String(d.getFullYear()).slice(2);
+        const dateLabel = `${dd}.${mm}.${yy}`;
+
+        const sourceHtml = note.source_url
+          ? `<div class="note-source"><a href="${escapeAttr(note.source_url)}" target="_blank" rel="noopener">${note.source_name || 'Source'} ↗</a></div>`
+          : '';
+
+        html += `
+          <div class="note-row">
+            <div class="note-date">${dateLabel}</div>
+            <div><div class="note-text">${note.text}</div>${sourceHtml}</div>
+            <div class="note-tag">${note.tag || ''}</div>
+          </div>`;
+      });
+
+      root.innerHTML = html;
+    }catch(err){
+      root.innerHTML = '<div class="notes-empty">The record could not be retrieved.</div>';
+    }
+  }
+
+  loadNotes();
+</script>
 
 </body>
 </html>

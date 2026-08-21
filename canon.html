@@ -21,11 +21,84 @@
 <meta name="twitter:image" content="https://jorjorwel.com/jorjor-wel-logo-01.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,700;0,900&family=Archivo+Expanded:wght@700;900&family=Libre+Baskerville:ital,wght@0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,700;0,900&family=Archivo+Expanded:wght@700;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 <style>
-  .dossier h4 a{ color:inherit; }
-  .dossier h4 a:hover{ color:var(--red); }
+  .flip-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .flip-card{
+    perspective:1400px;
+    height:420px;
+    cursor:pointer;
+    outline:none;
+  }
+  .flip-card-inner{
+    position:relative;
+    width:100%; height:100%;
+    transition:transform .6s cubic-bezier(.4,.2,.2,1);
+    transform-style:preserve-3d;
+  }
+  .flip-card.flipped .flip-card-inner{ transform:rotateY(180deg); }
+  .flip-face{
+    position:absolute; inset:0;
+    backface-visibility:hidden;
+    border:1px solid var(--rule-strong);
+    background:var(--card);
+    padding:26px 24px;
+    display:flex;
+    flex-direction:column;
+  }
+  .flip-face.front{
+    justify-content:space-between;
+  }
+  .flip-face.back{
+    transform:rotateY(180deg);
+    overflow-y:auto;
+  }
+  .flip-title{
+    font-family:'Archivo Expanded', sans-serif;
+    font-weight:900;
+    font-size:26px;
+    text-transform:uppercase;
+    line-height:1.05;
+    margin:20px 0 10px;
+  }
+  .flip-author{
+    font-family:'Libre Baskerville', serif;
+    font-style:italic;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+  .flip-rule{
+    border-top:1px solid var(--rule);
+    margin:18px 0;
+  }
+  .flip-hint{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .flip-link{
+    display:inline-block;
+    margin-top:14px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    border-bottom:1px solid var(--ink);
+    padding-bottom:2px;
+    align-self:flex-start;
+  }
+  .flip-link:hover{ border-color:var(--red); color:var(--red); }
+  .flip-card:focus-visible .flip-face.front{ border-color:var(--red); }
 </style>
 </head>
 <body>
@@ -40,193 +113,313 @@
         <div class="section-num">THE CANON</div>
         <h2 class="section-title">Dossiers, not book reports</h2>
       </div>
-      <div class="section-note">EACH ENTRY SCORED ACROSS SIX MECHANISMS OF CONTROL</div>
+      <div class="section-note">TAP A FILE TO DECLASSIFY IT</div>
     </div>
   </div>
 </section>
 
 <section class="section" style="padding-top:0;">
   <div class="wrap">
-    <div class="dossier-grid">
+    <div class="flip-grid">
 
-      <div class="dossier">
-        <div class="dossier-file">FILE // D-001</div>
-        <h4><a href="/books/1984.html">Nineteen Eighty-Four</a></h4>
-        <div class="author">George Orwell, 1949</div>
-
-        <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
-        <div class="metric"><span>State control</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
-        <div class="metric"><span>Propaganda</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
-        <div class="metric"><span>Censorship</span><div class="bar"><span style="width:90%"></span></div><span class="val">9</span></div>
-        <div class="metric"><span>Technological control</span><div class="bar"><span style="width:70%"></span></div><span class="val">7</span></div>
-        <div class="metric"><span>Social control</span><div class="bar"><span style="width:85%"></span></div><span class="val">8</span></div>
-
-        <div class="dossier-mech"><span>PRIMARY MECHANISM</span>Control of reality itself</div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="Nineteen Eighty-Four, tap to see scorecard">
+        <div class="flip-card-inner">
+          <div class="flip-face front">
+            <div>
+              <div class="dossier-file">FILE // D-001</div>
+              <div class="flip-title">Nineteen Eighty-Four</div>
+              <div class="flip-author">George Orwell, 1949</div>
+            </div>
+            <div class="flip-hint">Tap to declassify ↻</div>
+          </div>
+          <div class="flip-face back">
+            <div class="dossier-file">SCORECARD</div>
+            <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
+            <div class="metric"><span>State control</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
+            <div class="metric"><span>Propaganda</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
+            <div class="metric"><span>Censorship</span><div class="bar"><span style="width:90%"></span></div><span class="val">9</span></div>
+            <div class="metric"><span>Technological control</span><div class="bar"><span style="width:70%"></span></div><span class="val">7</span></div>
+            <div class="metric"><span>Social control</span><div class="bar"><span style="width:85%"></span></div><span class="val">8</span></div>
+            <div class="flip-rule"></div>
+            <div class="dossier-mech"><span>PRIMARY MECHANISM</span>Control of reality itself</div>
+            <a class="flip-link" href="/books/1984.html">Full file + video →</a>
+          </div>
+        </div>
       </div>
 
-      <div class="dossier">
-        <div class="dossier-file">FILE // D-006</div>
-        <h4><a href="/books/animal-farm.html">Animal Farm</a></h4>
-        <div class="author">George Orwell, 1945</div>
-
-        <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:40%"></span></div><span class="val">4</span></div>
-        <div class="metric"><span>State control</span><div class="bar"><span style="width:90%"></span></div><span class="val">9</span></div>
-        <div class="metric"><span>Propaganda</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
-        <div class="metric"><span>Censorship</span><div class="bar"><span style="width:70%"></span></div><span class="val">7</span></div>
-        <div class="metric"><span>Technological control</span><div class="bar"><span style="width:10%"></span></div><span class="val">1</span></div>
-        <div class="metric"><span>Social control</span><div class="bar"><span style="width:80%"></span></div><span class="val">8</span></div>
-
-        <div class="dossier-mech"><span>PRIMARY MECHANISM</span>Revolution rewritten into tyranny</div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="Animal Farm, tap to see scorecard">
+        <div class="flip-card-inner">
+          <div class="flip-face front">
+            <div>
+              <div class="dossier-file">FILE // D-006</div>
+              <div class="flip-title">Animal Farm</div>
+              <div class="flip-author">George Orwell, 1945</div>
+            </div>
+            <div class="flip-hint">Tap to declassify ↻</div>
+          </div>
+          <div class="flip-face back">
+            <div class="dossier-file">SCORECARD</div>
+            <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:40%"></span></div><span class="val">4</span></div>
+            <div class="metric"><span>State control</span><div class="bar"><span style="width:90%"></span></div><span class="val">9</span></div>
+            <div class="metric"><span>Propaganda</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
+            <div class="metric"><span>Censorship</span><div class="bar"><span style="width:70%"></span></div><span class="val">7</span></div>
+            <div class="metric"><span>Technological control</span><div class="bar"><span style="width:10%"></span></div><span class="val">1</span></div>
+            <div class="metric"><span>Social control</span><div class="bar"><span style="width:80%"></span></div><span class="val">8</span></div>
+            <div class="flip-rule"></div>
+            <div class="dossier-mech"><span>PRIMARY MECHANISM</span>Revolution rewritten into tyranny</div>
+            <a class="flip-link" href="/books/animal-farm.html">Full file + video →</a>
+          </div>
+        </div>
       </div>
 
-      <div class="dossier">
-        <div class="dossier-file">FILE // D-014</div>
-        <h4><a href="/books/brave-new-world.html">Brave New World</a></h4>
-        <div class="author">Aldous Huxley, 1932</div>
-
-        <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:40%"></span></div><span class="val">4</span></div>
-        <div class="metric"><span>State control</span><div class="bar"><span style="width:70%"></span></div><span class="val">7</span></div>
-        <div class="metric"><span>Propaganda</span><div class="bar"><span style="width:90%"></span></div><span class="val">9</span></div>
-        <div class="metric"><span>Censorship</span><div class="bar"><span style="width:60%"></span></div><span class="val">6</span></div>
-        <div class="metric"><span>Technological control</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
-        <div class="metric"><span>Social control</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
-
-        <div class="dossier-mech"><span>PRIMARY MECHANISM</span>Consent, manufactured through comfort</div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="Brave New World, tap to see scorecard">
+        <div class="flip-card-inner">
+          <div class="flip-face front">
+            <div>
+              <div class="dossier-file">FILE // D-014</div>
+              <div class="flip-title">Brave New World</div>
+              <div class="flip-author">Aldous Huxley, 1932</div>
+            </div>
+            <div class="flip-hint">Tap to declassify ↻</div>
+          </div>
+          <div class="flip-face back">
+            <div class="dossier-file">SCORECARD</div>
+            <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:40%"></span></div><span class="val">4</span></div>
+            <div class="metric"><span>State control</span><div class="bar"><span style="width:70%"></span></div><span class="val">7</span></div>
+            <div class="metric"><span>Propaganda</span><div class="bar"><span style="width:90%"></span></div><span class="val">9</span></div>
+            <div class="metric"><span>Censorship</span><div class="bar"><span style="width:60%"></span></div><span class="val">6</span></div>
+            <div class="metric"><span>Technological control</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
+            <div class="metric"><span>Social control</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
+            <div class="flip-rule"></div>
+            <div class="dossier-mech"><span>PRIMARY MECHANISM</span>Consent, manufactured through comfort</div>
+            <a class="flip-link" href="/books/brave-new-world.html">Full file + video →</a>
+          </div>
+        </div>
       </div>
 
-      <div class="dossier">
-        <div class="dossier-file">FILE // D-027</div>
-        <h4><a href="/books/we.html">We</a></h4>
-        <div class="author">Yevgeny Zamyatin, 1921</div>
-
-        <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:95%"></span></div><span class="val">9</span></div>
-        <div class="metric"><span>State control</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
-        <div class="metric"><span>Propaganda</span><div class="bar"><span style="width:80%"></span></div><span class="val">8</span></div>
-        <div class="metric"><span>Censorship</span><div class="bar"><span style="width:90%"></span></div><span class="val">9</span></div>
-        <div class="metric"><span>Technological control</span><div class="bar"><span style="width:90%"></span></div><span class="val">9</span></div>
-        <div class="metric"><span>Social control</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
-
-        <div class="dossier-mech"><span>PRIMARY MECHANISM</span>Visibility as the only law</div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="We, tap to see scorecard">
+        <div class="flip-card-inner">
+          <div class="flip-face front">
+            <div>
+              <div class="dossier-file">FILE // D-027</div>
+              <div class="flip-title">We</div>
+              <div class="flip-author">Yevgeny Zamyatin, 1921</div>
+            </div>
+            <div class="flip-hint">Tap to declassify ↻</div>
+          </div>
+          <div class="flip-face back">
+            <div class="dossier-file">SCORECARD</div>
+            <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:95%"></span></div><span class="val">9</span></div>
+            <div class="metric"><span>State control</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
+            <div class="metric"><span>Propaganda</span><div class="bar"><span style="width:80%"></span></div><span class="val">8</span></div>
+            <div class="metric"><span>Censorship</span><div class="bar"><span style="width:90%"></span></div><span class="val">9</span></div>
+            <div class="metric"><span>Technological control</span><div class="bar"><span style="width:90%"></span></div><span class="val">9</span></div>
+            <div class="metric"><span>Social control</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
+            <div class="flip-rule"></div>
+            <div class="dossier-mech"><span>PRIMARY MECHANISM</span>Visibility as the only law</div>
+            <a class="flip-link" href="/books/we.html">Full file + video →</a>
+          </div>
+        </div>
       </div>
 
-      <div class="dossier">
-        <div class="dossier-file">FILE // D-033</div>
-        <h4><a href="/books/fahrenheit-451.html">Fahrenheit 451</a></h4>
-        <div class="author">Ray Bradbury, 1953</div>
-
-        <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:50%"></span></div><span class="val">5</span></div>
-        <div class="metric"><span>State control</span><div class="bar"><span style="width:80%"></span></div><span class="val">8</span></div>
-        <div class="metric"><span>Propaganda</span><div class="bar"><span style="width:70%"></span></div><span class="val">7</span></div>
-        <div class="metric"><span>Censorship</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
-        <div class="metric"><span>Technological control</span><div class="bar"><span style="width:60%"></span></div><span class="val">6</span></div>
-        <div class="metric"><span>Social control</span><div class="bar"><span style="width:90%"></span></div><span class="val">9</span></div>
-
-        <div class="dossier-mech"><span>PRIMARY MECHANISM</span>Distraction, not force</div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="Fahrenheit 451, tap to see scorecard">
+        <div class="flip-card-inner">
+          <div class="flip-face front">
+            <div>
+              <div class="dossier-file">FILE // D-033</div>
+              <div class="flip-title">Fahrenheit 451</div>
+              <div class="flip-author">Ray Bradbury, 1953</div>
+            </div>
+            <div class="flip-hint">Tap to declassify ↻</div>
+          </div>
+          <div class="flip-face back">
+            <div class="dossier-file">SCORECARD</div>
+            <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:50%"></span></div><span class="val">5</span></div>
+            <div class="metric"><span>State control</span><div class="bar"><span style="width:80%"></span></div><span class="val">8</span></div>
+            <div class="metric"><span>Propaganda</span><div class="bar"><span style="width:70%"></span></div><span class="val">7</span></div>
+            <div class="metric"><span>Censorship</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
+            <div class="metric"><span>Technological control</span><div class="bar"><span style="width:60%"></span></div><span class="val">6</span></div>
+            <div class="metric"><span>Social control</span><div class="bar"><span style="width:90%"></span></div><span class="val">9</span></div>
+            <div class="flip-rule"></div>
+            <div class="dossier-mech"><span>PRIMARY MECHANISM</span>Distraction, not force</div>
+            <a class="flip-link" href="/books/fahrenheit-451.html">Full file + video →</a>
+          </div>
+        </div>
       </div>
 
-      <div class="dossier">
-        <div class="dossier-file">FILE // D-041</div>
-        <h4><a href="/books/the-handmaids-tale.html">The Handmaid's Tale</a></h4>
-        <div class="author">Margaret Atwood, 1985</div>
-
-        <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:70%"></span></div><span class="val">7</span></div>
-        <div class="metric"><span>State control</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
-        <div class="metric"><span>Propaganda</span><div class="bar"><span style="width:80%"></span></div><span class="val">8</span></div>
-        <div class="metric"><span>Censorship</span><div class="bar"><span style="width:90%"></span></div><span class="val">9</span></div>
-        <div class="metric"><span>Technological control</span><div class="bar"><span style="width:30%"></span></div><span class="val">3</span></div>
-        <div class="metric"><span>Social control</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
-
-        <div class="dossier-mech"><span>PRIMARY MECHANISM</span>Control through role, not surveillance</div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="The Handmaid's Tale, tap to see scorecard">
+        <div class="flip-card-inner">
+          <div class="flip-face front">
+            <div>
+              <div class="dossier-file">FILE // D-041</div>
+              <div class="flip-title">The Handmaid's Tale</div>
+              <div class="flip-author">Margaret Atwood, 1985</div>
+            </div>
+            <div class="flip-hint">Tap to declassify ↻</div>
+          </div>
+          <div class="flip-face back">
+            <div class="dossier-file">SCORECARD</div>
+            <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:70%"></span></div><span class="val">7</span></div>
+            <div class="metric"><span>State control</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
+            <div class="metric"><span>Propaganda</span><div class="bar"><span style="width:80%"></span></div><span class="val">8</span></div>
+            <div class="metric"><span>Censorship</span><div class="bar"><span style="width:90%"></span></div><span class="val">9</span></div>
+            <div class="metric"><span>Technological control</span><div class="bar"><span style="width:30%"></span></div><span class="val">3</span></div>
+            <div class="metric"><span>Social control</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
+            <div class="flip-rule"></div>
+            <div class="dossier-mech"><span>PRIMARY MECHANISM</span>Control through role, not surveillance</div>
+            <a class="flip-link" href="/books/the-handmaids-tale.html">Full file + video →</a>
+          </div>
+        </div>
       </div>
 
-      <div class="dossier">
-        <div class="dossier-file">FILE // D-049</div>
-        <h4><a href="/books/a-clockwork-orange.html">A Clockwork Orange</a></h4>
-        <div class="author">Anthony Burgess, 1962</div>
-
-        <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:50%"></span></div><span class="val">5</span></div>
-        <div class="metric"><span>State control</span><div class="bar"><span style="width:80%"></span></div><span class="val">8</span></div>
-        <div class="metric"><span>Propaganda</span><div class="bar"><span style="width:40%"></span></div><span class="val">4</span></div>
-        <div class="metric"><span>Censorship</span><div class="bar"><span style="width:30%"></span></div><span class="val">3</span></div>
-        <div class="metric"><span>Technological control</span><div class="bar"><span style="width:90%"></span></div><span class="val">9</span></div>
-        <div class="metric"><span>Social control</span><div class="bar"><span style="width:70%"></span></div><span class="val">7</span></div>
-
-        <div class="dossier-mech"><span>PRIMARY MECHANISM</span>Free will engineered out</div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="A Clockwork Orange, tap to see scorecard">
+        <div class="flip-card-inner">
+          <div class="flip-face front">
+            <div>
+              <div class="dossier-file">FILE // D-049</div>
+              <div class="flip-title">A Clockwork Orange</div>
+              <div class="flip-author">Anthony Burgess, 1962</div>
+            </div>
+            <div class="flip-hint">Tap to declassify ↻</div>
+          </div>
+          <div class="flip-face back">
+            <div class="dossier-file">SCORECARD</div>
+            <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:50%"></span></div><span class="val">5</span></div>
+            <div class="metric"><span>State control</span><div class="bar"><span style="width:80%"></span></div><span class="val">8</span></div>
+            <div class="metric"><span>Propaganda</span><div class="bar"><span style="width:40%"></span></div><span class="val">4</span></div>
+            <div class="metric"><span>Censorship</span><div class="bar"><span style="width:30%"></span></div><span class="val">3</span></div>
+            <div class="metric"><span>Technological control</span><div class="bar"><span style="width:90%"></span></div><span class="val">9</span></div>
+            <div class="metric"><span>Social control</span><div class="bar"><span style="width:70%"></span></div><span class="val">7</span></div>
+            <div class="flip-rule"></div>
+            <div class="dossier-mech"><span>PRIMARY MECHANISM</span>Free will engineered out</div>
+            <a class="flip-link" href="/books/a-clockwork-orange.html">Full file + video →</a>
+          </div>
+        </div>
       </div>
 
-      <div class="dossier">
-        <div class="dossier-file">FILE // D-052</div>
-        <h4><a href="/books/atlas-shrugged.html">Atlas Shrugged</a></h4>
-        <div class="author">Ayn Rand, 1957</div>
-
-        <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:20%"></span></div><span class="val">2</span></div>
-        <div class="metric"><span>State control</span><div class="bar"><span style="width:80%"></span></div><span class="val">8</span></div>
-        <div class="metric"><span>Propaganda</span><div class="bar"><span style="width:60%"></span></div><span class="val">6</span></div>
-        <div class="metric"><span>Censorship</span><div class="bar"><span style="width:40%"></span></div><span class="val">4</span></div>
-        <div class="metric"><span>Technological control</span><div class="bar"><span style="width:20%"></span></div><span class="val">2</span></div>
-        <div class="metric"><span>Social control</span><div class="bar"><span style="width:60%"></span></div><span class="val">6</span></div>
-
-        <div class="dossier-mech"><span>PRIMARY MECHANISM</span>Collapse through coerced dependency</div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="Atlas Shrugged, tap to see scorecard">
+        <div class="flip-card-inner">
+          <div class="flip-face front">
+            <div>
+              <div class="dossier-file">FILE // D-052</div>
+              <div class="flip-title">Atlas Shrugged</div>
+              <div class="flip-author">Ayn Rand, 1957</div>
+            </div>
+            <div class="flip-hint">Tap to declassify ↻</div>
+          </div>
+          <div class="flip-face back">
+            <div class="dossier-file">SCORECARD</div>
+            <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:20%"></span></div><span class="val">2</span></div>
+            <div class="metric"><span>State control</span><div class="bar"><span style="width:80%"></span></div><span class="val">8</span></div>
+            <div class="metric"><span>Propaganda</span><div class="bar"><span style="width:60%"></span></div><span class="val">6</span></div>
+            <div class="metric"><span>Censorship</span><div class="bar"><span style="width:40%"></span></div><span class="val">4</span></div>
+            <div class="metric"><span>Technological control</span><div class="bar"><span style="width:20%"></span></div><span class="val">2</span></div>
+            <div class="metric"><span>Social control</span><div class="bar"><span style="width:60%"></span></div><span class="val">6</span></div>
+            <div class="flip-rule"></div>
+            <div class="dossier-mech"><span>PRIMARY MECHANISM</span>Collapse through coerced dependency</div>
+            <a class="flip-link" href="/books/atlas-shrugged.html">Full file + video →</a>
+          </div>
+        </div>
       </div>
 
-      <div class="dossier">
-        <div class="dossier-file">FILE // D-073</div>
-        <h4><a href="/books/the-hunger-games.html">The Hunger Games</a></h4>
-        <div class="author">Suzanne Collins, 2008</div>
-
-        <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:80%"></span></div><span class="val">8</span></div>
-        <div class="metric"><span>State control</span><div class="bar"><span style="width:90%"></span></div><span class="val">9</span></div>
-        <div class="metric"><span>Propaganda</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
-        <div class="metric"><span>Censorship</span><div class="bar"><span style="width:60%"></span></div><span class="val">6</span></div>
-        <div class="metric"><span>Technological control</span><div class="bar"><span style="width:70%"></span></div><span class="val">7</span></div>
-        <div class="metric"><span>Social control</span><div class="bar"><span style="width:90%"></span></div><span class="val">9</span></div>
-
-        <div class="dossier-mech"><span>PRIMARY MECHANISM</span>Spectacle as pacification</div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="The Hunger Games, tap to see scorecard">
+        <div class="flip-card-inner">
+          <div class="flip-face front">
+            <div>
+              <div class="dossier-file">FILE // D-073</div>
+              <div class="flip-title">The Hunger Games</div>
+              <div class="flip-author">Suzanne Collins, 2008</div>
+            </div>
+            <div class="flip-hint">Tap to declassify ↻</div>
+          </div>
+          <div class="flip-face back">
+            <div class="dossier-file">SCORECARD</div>
+            <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:80%"></span></div><span class="val">8</span></div>
+            <div class="metric"><span>State control</span><div class="bar"><span style="width:90%"></span></div><span class="val">9</span></div>
+            <div class="metric"><span>Propaganda</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
+            <div class="metric"><span>Censorship</span><div class="bar"><span style="width:60%"></span></div><span class="val">6</span></div>
+            <div class="metric"><span>Technological control</span><div class="bar"><span style="width:70%"></span></div><span class="val">7</span></div>
+            <div class="metric"><span>Social control</span><div class="bar"><span style="width:90%"></span></div><span class="val">9</span></div>
+            <div class="flip-rule"></div>
+            <div class="dossier-mech"><span>PRIMARY MECHANISM</span>Spectacle as pacification</div>
+            <a class="flip-link" href="/books/the-hunger-games.html">Full file + video →</a>
+          </div>
+        </div>
       </div>
 
-      <div class="dossier">
-        <div class="dossier-file">FILE // D-058</div>
-        <h4><a href="/books/the-trial.html">The Trial</a></h4>
-        <div class="author">Franz Kafka, 1925</div>
-
-        <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:60%"></span></div><span class="val">6</span></div>
-        <div class="metric"><span>State control</span><div class="bar"><span style="width:90%"></span></div><span class="val">9</span></div>
-        <div class="metric"><span>Propaganda</span><div class="bar"><span style="width:30%"></span></div><span class="val">3</span></div>
-        <div class="metric"><span>Censorship</span><div class="bar"><span style="width:50%"></span></div><span class="val">5</span></div>
-        <div class="metric"><span>Technological control</span><div class="bar"><span style="width:10%"></span></div><span class="val">1</span></div>
-        <div class="metric"><span>Social control</span><div class="bar"><span style="width:70%"></span></div><span class="val">7</span></div>
-
-        <div class="dossier-mech"><span>PRIMARY MECHANISM</span>Bureaucracy as its own verdict</div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="The Trial, tap to see scorecard">
+        <div class="flip-card-inner">
+          <div class="flip-face front">
+            <div>
+              <div class="dossier-file">FILE // D-058</div>
+              <div class="flip-title">The Trial</div>
+              <div class="flip-author">Franz Kafka, 1925</div>
+            </div>
+            <div class="flip-hint">Tap to declassify ↻</div>
+          </div>
+          <div class="flip-face back">
+            <div class="dossier-file">SCORECARD</div>
+            <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:60%"></span></div><span class="val">6</span></div>
+            <div class="metric"><span>State control</span><div class="bar"><span style="width:90%"></span></div><span class="val">9</span></div>
+            <div class="metric"><span>Propaganda</span><div class="bar"><span style="width:30%"></span></div><span class="val">3</span></div>
+            <div class="metric"><span>Censorship</span><div class="bar"><span style="width:50%"></span></div><span class="val">5</span></div>
+            <div class="metric"><span>Technological control</span><div class="bar"><span style="width:10%"></span></div><span class="val">1</span></div>
+            <div class="metric"><span>Social control</span><div class="bar"><span style="width:70%"></span></div><span class="val">7</span></div>
+            <div class="flip-rule"></div>
+            <div class="dossier-mech"><span>PRIMARY MECHANISM</span>Bureaucracy as its own verdict</div>
+            <a class="flip-link" href="/books/the-trial.html">Full file + video →</a>
+          </div>
+        </div>
       </div>
 
-      <div class="dossier">
-        <div class="dossier-file">FILE // D-062</div>
-        <h4><a href="/books/the-giver.html">The Giver</a></h4>
-        <div class="author">Lois Lowry, 1993</div>
-
-        <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:70%"></span></div><span class="val">7</span></div>
-        <div class="metric"><span>State control</span><div class="bar"><span style="width:90%"></span></div><span class="val">9</span></div>
-        <div class="metric"><span>Propaganda</span><div class="bar"><span style="width:70%"></span></div><span class="val">7</span></div>
-        <div class="metric"><span>Censorship</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
-        <div class="metric"><span>Technological control</span><div class="bar"><span style="width:50%"></span></div><span class="val">5</span></div>
-        <div class="metric"><span>Social control</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
-
-        <div class="dossier-mech"><span>PRIMARY MECHANISM</span>Sameness through erased memory</div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="The Giver, tap to see scorecard">
+        <div class="flip-card-inner">
+          <div class="flip-face front">
+            <div>
+              <div class="dossier-file">FILE // D-062</div>
+              <div class="flip-title">The Giver</div>
+              <div class="flip-author">Lois Lowry, 1993</div>
+            </div>
+            <div class="flip-hint">Tap to declassify ↻</div>
+          </div>
+          <div class="flip-face back">
+            <div class="dossier-file">SCORECARD</div>
+            <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:70%"></span></div><span class="val">7</span></div>
+            <div class="metric"><span>State control</span><div class="bar"><span style="width:90%"></span></div><span class="val">9</span></div>
+            <div class="metric"><span>Propaganda</span><div class="bar"><span style="width:70%"></span></div><span class="val">7</span></div>
+            <div class="metric"><span>Censorship</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
+            <div class="metric"><span>Technological control</span><div class="bar"><span style="width:50%"></span></div><span class="val">5</span></div>
+            <div class="metric"><span>Social control</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
+            <div class="flip-rule"></div>
+            <div class="dossier-mech"><span>PRIMARY MECHANISM</span>Sameness through erased memory</div>
+            <a class="flip-link" href="/books/the-giver.html">Full file + video →</a>
+          </div>
+        </div>
       </div>
 
-      <div class="dossier">
-        <div class="dossier-file">FILE // D-067</div>
-        <h4><a href="/books/the-children-of-men.html">The Children of Men</a></h4>
-        <div class="author">P. D. James, 1992</div>
-
-        <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:60%"></span></div><span class="val">6</span></div>
-        <div class="metric"><span>State control</span><div class="bar"><span style="width:90%"></span></div><span class="val">9</span></div>
-        <div class="metric"><span>Propaganda</span><div class="bar"><span style="width:60%"></span></div><span class="val">6</span></div>
-        <div class="metric"><span>Censorship</span><div class="bar"><span style="width:50%"></span></div><span class="val">5</span></div>
-        <div class="metric"><span>Technological control</span><div class="bar"><span style="width:40%"></span></div><span class="val">4</span></div>
-        <div class="metric"><span>Social control</span><div class="bar"><span style="width:80%"></span></div><span class="val">8</span></div>
-
-        <div class="dossier-mech"><span>PRIMARY MECHANISM</span>Authoritarianism born of despair</div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="The Children of Men, tap to see scorecard">
+        <div class="flip-card-inner">
+          <div class="flip-face front">
+            <div>
+              <div class="dossier-file">FILE // D-067</div>
+              <div class="flip-title">The Children of Men</div>
+              <div class="flip-author">P. D. James, 1992</div>
+            </div>
+            <div class="flip-hint">Tap to declassify ↻</div>
+          </div>
+          <div class="flip-face back">
+            <div class="dossier-file">SCORECARD</div>
+            <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:60%"></span></div><span class="val">6</span></div>
+            <div class="metric"><span>State control</span><div class="bar"><span style="width:90%"></span></div><span class="val">9</span></div>
+            <div class="metric"><span>Propaganda</span><div class="bar"><span style="width:60%"></span></div><span class="val">6</span></div>
+            <div class="metric"><span>Censorship</span><div class="bar"><span style="width:50%"></span></div><span class="val">5</span></div>
+            <div class="metric"><span>Technological control</span><div class="bar"><span style="width:40%"></span></div><span class="val">4</span></div>
+            <div class="metric"><span>Social control</span><div class="bar"><span style="width:80%"></span></div><span class="val">8</span></div>
+            <div class="flip-rule"></div>
+            <div class="dossier-mech"><span>PRIMARY MECHANISM</span>Authoritarianism born of despair</div>
+            <a class="flip-link" href="/books/the-children-of-men.html">Full file + video →</a>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -246,6 +439,19 @@
     <div class="footer-quiet">Fiction warned us. This is the record of whether we listened.</div>
   </div>
 </footer>
+
+<script>
+  document.querySelectorAll('.flip-card').forEach(function(card){
+    function toggle(){ card.classList.toggle('flipped'); }
+    card.addEventListener('click', toggle);
+    card.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        toggle();
+      }
+    });
+  });
+</script>
 
 </body>
 </html>

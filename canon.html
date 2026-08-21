@@ -23,24 +23,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,700;0,900&family=Archivo+Expanded:wght@700;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
+<style>
+  .dossier h4 a{ color:inherit; }
+  .dossier h4 a:hover{ color:var(--red); }
+</style>
 </head>
 <body>
 
-<header>
-  <div class="wrap header-inner">
-    <div class="logo">
-      JORJOR<span class="wel"> WEL</span>
-      <sub>Ministry of Reality // Est. 2026</sub>
-    </div>
-    <nav>
-      <a href="/">Essays</a>
-      <a href="/canon.html" class="active">The Canon</a>
-      <a href="/notes.html">Surveillance Notes</a>
-      <a href="/lists.html">Reading Lists</a>
-      <a href="/about.html">About</a>
-    </nav>
-  </div>
-</header>
+<header id="site-header"></header>
+<script src="/header.js"></script>
 
 <section class="section" style="border-bottom:none; padding-bottom:0;">
   <div class="wrap">
@@ -60,7 +51,7 @@
 
       <div class="dossier">
         <div class="dossier-file">FILE // D-001</div>
-        <h4>Nineteen Eighty-Four</h4>
+        <h4><a href="/books/1984.html">Nineteen Eighty-Four</a></h4>
         <div class="author">George Orwell, 1949</div>
 
         <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
@@ -75,7 +66,7 @@
 
       <div class="dossier">
         <div class="dossier-file">FILE // D-006</div>
-        <h4>Animal Farm</h4>
+        <h4><a href="/books/animal-farm.html">Animal Farm</a></h4>
         <div class="author">George Orwell, 1945</div>
 
         <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:40%"></span></div><span class="val">4</span></div>
@@ -90,7 +81,7 @@
 
       <div class="dossier">
         <div class="dossier-file">FILE // D-014</div>
-        <h4>Brave New World</h4>
+        <h4><a href="/books/brave-new-world.html">Brave New World</a></h4>
         <div class="author">Aldous Huxley, 1932</div>
 
         <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:40%"></span></div><span class="val">4</span></div>
@@ -105,7 +96,7 @@
 
       <div class="dossier">
         <div class="dossier-file">FILE // D-027</div>
-        <h4>We</h4>
+        <h4><a href="/books/we.html">We</a></h4>
         <div class="author">Yevgeny Zamyatin, 1921</div>
 
         <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:95%"></span></div><span class="val">9</span></div>
@@ -120,7 +111,7 @@
 
       <div class="dossier">
         <div class="dossier-file">FILE // D-033</div>
-        <h4>Fahrenheit 451</h4>
+        <h4><a href="/books/fahrenheit-451.html">Fahrenheit 451</a></h4>
         <div class="author">Ray Bradbury, 1953</div>
 
         <div class="metric"><span>Surveillance</span><div class="bar"><span style="width:50%"></span></div><span class="val">5</span></div>
@@ -245,7 +236,7 @@
 <footer>
   <div class="wrap">
     <div class="footer-inner">
-      <div class="footer-line">JORJOR WEL // MINISTRY OF REALITY<br>ESSAYS / THE CANON / SURVEILLANCE NOTES / READING LISTS / ABOUT</div>
+      <div class="footer-line">JORJOR WEL // MINISTRY OF REALITY<br>ESSAYS / THE CANON / SURVEILLANCE NOTES / READING LISTS / ORWELL / ABOUT</div>
       <div class="footer-links">
         <a href="/lists.html">Reading Lists</a>
         <a href="/about.html">About</a>

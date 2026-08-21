@@ -94,6 +94,7 @@
     transition:border-color .15s ease, color .15s ease;
   }
   nav a:hover{ color:var(--ink); border-color:var(--red); }
+  nav a.active{ color:var(--ink); border-color:var(--red); }
   .nav-toggle{ display:none; }
 
   /* ---------- HERO ---------- */
@@ -477,6 +478,64 @@
     color:var(--ink-faint);
   }
 
+  /* ---------- ABOUT / ORWELL PAGE ---------- */
+  /* Note: grid layout for these sections is applied inline to the .wrap
+     div in the HTML itself (image + text columns). These section rules
+     intentionally do NOT declare their own grid, to avoid a conflicting
+     nested-grid layout that squeezes the inner content and causes text
+     to overlap the image. */
+  .about-hero{
+    padding:70px 0 60px;
+    border-bottom:1px solid var(--rule);
+  }
+  .about-portrait{
+    width:100%;
+    border:1px solid var(--rule-strong);
+    display:block;
+  }
+  .about-kicker{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--red);
+    margin-bottom:18px;
+  }
+  .about-hero h1{
+    font-family:'Archivo Expanded', sans-serif;
+    font-weight:900;
+    font-size:clamp(34px,4.2vw,52px);
+    line-height:1.08;
+    text-transform:uppercase;
+    margin:0 0 20px;
+  }
+  .about-hero p{
+    font-family:'Libre Baskerville', serif;
+    font-size:17px;
+    line-height:1.7;
+    color:var(--ink-soft);
+    max-width:52ch;
+    margin:0 0 16px;
+  }
+  .about-body{
+    padding:60px 0;
+  }
+  .about-body h3{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin:0 0 16px;
+  }
+  .about-body p{
+    font-family:'Libre Baskerville', serif;
+    font-size:16px;
+    line-height:1.75;
+    color:var(--ink-soft);
+    margin:0 0 18px;
+  }
+
   /* ---------- BOOK DETAIL PAGE ---------- */
   .book-hero{
     padding:60px 0 50px;
@@ -511,9 +570,6 @@
 
   .book-body{
     padding:60px 0;
-    display:grid;
-    grid-template-columns:1fr 320px;
-    gap:64px;
     border-bottom:1px solid var(--rule);
   }
   .book-essay h3{
@@ -603,7 +659,6 @@
     nav{ gap:20px; }
     .note-row{ grid-template-columns:1fr; gap:6px; }
     .note-tag{ order:3; }
-    .book-body{ grid-template-columns:1fr; gap:36px; }
   }
   @media (max-width:560px){
     .wrap{ padding:0 20px; }

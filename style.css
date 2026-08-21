@@ -1,13 +1,13 @@
 :root{
-    --paper:#E9E4D6;
-    --paper-2:#E1DBC9;
-    --card:#F2EEE2;
-    --ink:#15130F;
-    --ink-soft:#5B5747;
-    --ink-faint:#8B8674;
+    --paper:#15161A;
+    --paper-2:#1C1D22;
+    --card:#1C1D22;
+    --ink:#E9E4D6;
+    --ink-soft:#B8B2A0;
+    --ink-faint:#726C5E;
     --red:#A2312B;
-    --rule:#C9C1AA;
-    --rule-strong:#15130F;
+    --rule:#33342E;
+    --rule-strong:#E9E4D6;
     --measure: 66ch;
   }
 
@@ -33,12 +33,12 @@
     background-image:
       repeating-linear-gradient(
         to bottom,
-        rgba(21,19,15,0.018) 0px,
-        rgba(21,19,15,0.018) 1px,
+        rgba(233,228,214,0.025) 0px,
+        rgba(233,228,214,0.025) 1px,
         transparent 1px,
         transparent 3px
       );
-    mix-blend-mode:multiply;
+    mix-blend-mode:screen;
   }
 
   a{ color:inherit; text-decoration:none; }
@@ -654,8 +654,6 @@
     nav{ gap:20px; }
     .note-row{ grid-template-columns:1fr; gap:6px; }
     .note-tag{ order:3; }
-    /* these sections' grid columns are set inline in the HTML on their
-       .wrap div — !important is required here to override an inline style */
     .about-hero .wrap,
     .about-body .wrap,
     .book-body .wrap{

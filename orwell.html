@@ -4,20 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Orwell — jorjor wel</title>
-<meta name="description" content="The man behind the name — novels, nonfiction, and essays, in one place.">
+<meta name="description" content="The man behind the name — novels, nonfiction, and essays, annotated.">
 
 <link rel="icon" type="image/png" href="/jorjor-wel-logo-01.png">
 <link rel="apple-touch-icon" href="/jorjor-wel-logo-01.png">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Orwell — JORJOR WEL">
-<meta property="og:description" content="The man behind the name — novels, nonfiction, and essays, in one place.">
+<meta property="og:description" content="The man behind the name — novels, nonfiction, and essays, annotated.">
 <meta property="og:image" content="https://jorjorwel.com/jorjor-wel-logo-01.png">
 <meta property="og:url" content="https://jorjorwel.com/orwell.html">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Orwell — JORJOR WEL">
-<meta name="twitter:description" content="The man behind the name — novels, nonfiction, and essays, in one place.">
+<meta name="twitter:description" content="The man behind the name — novels, nonfiction, and essays, annotated.">
 <meta name="twitter:image" content="https://jorjorwel.com/jorjor-wel-logo-01.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,8 +29,7 @@
     display:grid;
     grid-template-columns:90px 1fr auto;
     gap:24px;
-    align-items:baseline;
-    padding:16px 0;
+    padding:20px 0;
     border-top:1px solid var(--rule);
   }
   .work-row:last-child{ border-bottom:1px solid var(--rule); }
@@ -38,13 +37,24 @@
     font-family:'IBM Plex Mono', monospace;
     font-size:12px;
     color:var(--ink-faint);
+    padding-top:2px;
   }
+  .work-main{ display:flex; flex-direction:column; gap:6px; }
   .work-title{
     font-family:'Libre Baskerville', serif;
-    font-size:16px;
+    font-weight:700;
+    font-size:17px;
     color:var(--ink);
   }
+  .work-title a{ color:inherit; }
   .work-title a:hover{ color:var(--red); }
+  .work-note{
+    font-family:'Archivo', sans-serif;
+    font-size:14px;
+    line-height:1.6;
+    color:var(--ink-soft);
+    max-width:62ch;
+  }
   .work-tag{
     font-family:'IBM Plex Mono', monospace;
     font-size:10px;
@@ -52,6 +62,11 @@
     text-transform:uppercase;
     color:var(--ink-faint);
     white-space:nowrap;
+    padding-top:3px;
+  }
+  @media (max-width:640px){
+    .work-row{ grid-template-columns:1fr; gap:6px; }
+    .work-year{ order:-1; }
   }
 </style>
 </head>
@@ -83,12 +98,18 @@
     <div class="work-list">
       <div class="work-row">
         <div class="work-year">1945</div>
-        <div class="work-title"><a href="/books/animal-farm.html">Animal Farm</a></div>
+        <div class="work-main">
+          <div class="work-title"><a href="/books/animal-farm.html">Animal Farm</a></div>
+          <div class="work-note">A fable about the Russian Revolution that reads as a warning about any uprising against tyranny that reproduces the same tyranny under new management.</div>
+        </div>
         <div class="work-tag">Novel</div>
       </div>
       <div class="work-row">
         <div class="work-year">1949</div>
-        <div class="work-title"><a href="/books/1984.html">Nineteen Eighty-Four</a></div>
+        <div class="work-main">
+          <div class="work-title"><a href="/books/1984.html">Nineteen Eighty-Four</a></div>
+          <div class="work-note">Written as extrapolation, not prophecy — Orwell took the propaganda and surveillance methods he'd already watched in wartime Britain and the Soviet Union and asked what a government perfecting them would look like.</div>
+        </div>
         <div class="work-tag">Novel</div>
       </div>
     </div>
@@ -107,22 +128,34 @@
     <div class="work-list">
       <div class="work-row">
         <div class="work-year">1934</div>
-        <div class="work-title">Burmese Days</div>
+        <div class="work-main">
+          <div class="work-title">Burmese Days</div>
+          <div class="work-note">Drawn from Orwell's five years as an imperial policeman in Burma — a novel about colonial rule that reads less like fiction and more like an eyewitness account of how power corrodes the people who administer it.</div>
+        </div>
         <div class="work-tag">Novel</div>
       </div>
       <div class="work-row">
         <div class="work-year">1935</div>
-        <div class="work-title">A Clergyman's Daughter</div>
+        <div class="work-main">
+          <div class="work-title">A Clergyman's Daughter</div>
+          <div class="work-note">His most experimental and least-loved novel, including a stretch written entirely as unattributed dialogue. Orwell later tried to have it kept out of print.</div>
+        </div>
         <div class="work-tag">Novel</div>
       </div>
       <div class="work-row">
         <div class="work-year">1936</div>
-        <div class="work-title">Keep the Aspidistra Flying</div>
+        <div class="work-main">
+          <div class="work-title">Keep the Aspidistra Flying</div>
+          <div class="work-note">A satire of literary ambition and genteel poverty — a bookseller's assistant declares war on money, then discovers what actually happens to people who opt out of earning it.</div>
+        </div>
         <div class="work-tag">Novel</div>
       </div>
       <div class="work-row">
         <div class="work-year">1939</div>
-        <div class="work-title">Coming Up for Air</div>
+        <div class="work-main">
+          <div class="work-title">Coming Up for Air</div>
+          <div class="work-note">A middle-aged insurance salesman returns to his childhood town looking for the England he remembers, on the eve of a war Orwell could already see coming.</div>
+        </div>
         <div class="work-tag">Novel</div>
       </div>
     </div>
@@ -141,17 +174,26 @@
     <div class="work-list">
       <div class="work-row">
         <div class="work-year">1933</div>
-        <div class="work-title">Down and Out in Paris and London</div>
+        <div class="work-main">
+          <div class="work-title">Down and Out in Paris and London</div>
+          <div class="work-note">A memoir of deliberate poverty — Orwell worked as a dishwasher in Paris and tramped London's streets, and wrote down exactly how the system treated people who had nothing.</div>
+        </div>
         <div class="work-tag">Memoir</div>
       </div>
       <div class="work-row">
         <div class="work-year">1937</div>
-        <div class="work-title">The Road to Wigan Pier</div>
+        <div class="work-main">
+          <div class="work-title">The Road to Wigan Pier</div>
+          <div class="work-note">Commissioned as a report on unemployment in industrial northern England; the second half turned into an argument with the socialist movement Orwell was nominally writing for, about who it was actually built to serve.</div>
+        </div>
         <div class="work-tag">Reportage</div>
       </div>
       <div class="work-row">
         <div class="work-year">1938</div>
-        <div class="work-title">Homage to Catalonia</div>
+        <div class="work-main">
+          <div class="work-title">Homage to Catalonia</div>
+          <div class="work-note">His account of fighting in the Spanish Civil War, including watching allied factions turn on each other — the direct source of his lifelong distrust of political language used to disguise what's actually happening.</div>
+        </div>
         <div class="work-tag">Memoir</div>
       </div>
     </div>
@@ -170,27 +212,42 @@
     <div class="work-list">
       <div class="work-row">
         <div class="work-year">1936</div>
-        <div class="work-title">Shooting an Elephant</div>
+        <div class="work-main">
+          <div class="work-title">Shooting an Elephant</div>
+          <div class="work-note">Orwell, as a colonial officer, shoots an elephant he doesn't need to kill because a crowd expects him to — an essay about how authority traps the people who hold it as much as the people under it.</div>
+        </div>
         <div class="work-tag">Essay</div>
       </div>
       <div class="work-row">
         <div class="work-year">1941</div>
-        <div class="work-title">England Your England</div>
+        <div class="work-main">
+          <div class="work-title">England Your England</div>
+          <div class="work-note">Written during the Blitz, an attempt to define a national character worth defending without pretending the country had no serious problems of its own.</div>
+        </div>
         <div class="work-tag">Essay</div>
       </div>
       <div class="work-row">
         <div class="work-year">1945</div>
-        <div class="work-title">Notes on Nationalism</div>
+        <div class="work-main">
+          <div class="work-title">Notes on Nationalism</div>
+          <div class="work-note">Distinguishes nationalism from patriotism — the first defined by a need to see one's own side as always right, the second by love of a place that doesn't require thinking it's superior to anywhere else.</div>
+        </div>
         <div class="work-tag">Essay</div>
       </div>
       <div class="work-row">
         <div class="work-year">1946</div>
-        <div class="work-title">Politics and the English Language</div>
+        <div class="work-main">
+          <div class="work-title">Politics and the English Language</div>
+          <div class="work-note">The essay this whole site's vocabulary comes from — the argument that vague, euphemistic language isn't just bad writing, it's how political actors make cruelty and absurdity sound reasonable.</div>
+        </div>
         <div class="work-tag">Essay</div>
       </div>
       <div class="work-row">
         <div class="work-year">1946</div>
-        <div class="work-title">Why I Write</div>
+        <div class="work-main">
+          <div class="work-title">Why I Write</div>
+          <div class="work-note">Orwell's own account of what pulled him toward writing, and his claim that after 1936 every serious line he wrote was written, directly or indirectly, against totalitarianism.</div>
+        </div>
         <div class="work-tag">Essay</div>
       </div>
     </div>
@@ -204,7 +261,6 @@
       <div class="footer-links">
         <a href="/lists.html">Reading Lists</a>
         <a href="/about.html">About</a>
-        <a href="#">Sources</a>
       </div>
     </div>
     <div class="footer-quiet">Fiction warned us. This is the record of whether we listened.</div>

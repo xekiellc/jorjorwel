@@ -1,0 +1,14 @@
+{
+  "name": "jorjorwel-notes-pipeline",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Automated Surveillance Notes pipeline for jorjorwel.com",
+  "type": "module",
+  "scripts": {
+    "update-notes": "node scripts/update-notes.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.0",
+    "rss-parser": "^3.13.0"
+  }
+}

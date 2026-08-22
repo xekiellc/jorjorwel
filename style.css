@@ -618,6 +618,51 @@
   .book-related a:first-of-type{ border-top:none; }
   .book-related a:hover{ color:var(--red); }
 
+  /* ---------- ESSAY DETAIL PAGE ---------- */
+  .essay-hero{
+    padding:60px 0 50px;
+    border-bottom:1px solid var(--rule-strong);
+  }
+  .essay-hero .essay-meta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    display:flex;
+    gap:16px;
+    margin-bottom:20px;
+  }
+  .essay-hero h1{
+    font-family:'Libre Baskerville', serif;
+    font-weight:700;
+    font-size:clamp(30px,4.2vw,44px);
+    line-height:1.15;
+    margin:0;
+  }
+  .essay-body{
+    padding:60px 0 70px;
+  }
+  .essay-body .wrap{
+    max-width:760px;
+  }
+  .essay-body p{
+    font-family:'Libre Baskerville', serif;
+    font-size:17px;
+    line-height:1.85;
+    color:var(--ink-soft);
+    margin:0 0 22px;
+  }
+  .essay-body h3{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--red);
+    margin:44px 0 16px;
+  }
+  .essay-body h3:first-child{ margin-top:0; }
+
   /* ---------- RESPONSIVE ---------- */
   @media (max-width:860px){
     .hero-grid{ grid-template-columns:1fr; }

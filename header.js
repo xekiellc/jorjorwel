@@ -12,7 +12,7 @@
   }
 
   var links = [
-    { href: '/', label: 'Essays' },
+    { href: '/', label: 'Home' },
     { href: '/canon.html', label: 'The Canon' },
     { href: '/notes.html', label: 'Surveillance Notes' },
     { href: '/lists.html', label: 'Reading Lists' },

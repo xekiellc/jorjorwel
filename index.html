@@ -24,6 +24,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,700;0,900&family=Archivo+Expanded:wght@700;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 <style>
+  .dossier h4 a{ color:inherit; }
+  .dossier h4 a:hover{ color:var(--red); }
   .section-more{
     display:inline-block;
     margin-top:32px;
@@ -42,7 +44,6 @@
     padding:20px 0;
   }
 
-  /* flip cards, matching canon.html */
   .flip-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -126,7 +127,7 @@
     <div class="hero-main">
       <h1 class="hero-title">JORJOR<br><span class="line2">WEL</span></h1>
       <p class="hero-sub">What the novels saw coming.</p>
-      <p class="hero-redacted">A reading room for dystopian fiction and the surveillance state it kept warning us about. <span class="redact-wrap"><span class="redact">the government is not the only one watching</span><span class="redact-tag">hover to declassify</span></span> — essays, annotated novels, and a running record of the present.</p>
+      <p class="hero-redacted">A reading room for dystopian fiction and the surveillance state it kept warning us about. <span class="redact-wrap"><span class="redact">the government is not the only one watching</span><span class="redact-tag">hover to declassify</span></span> — twelve books filed as dossiers, and a running record of the present.</p>
     </div>
 
     <div class="index-widget">
@@ -141,44 +142,6 @@
         <div class="index-bar-row"><span>Propaganda</span><div class="index-bar"><span style="width:69%"></span></div><span>7</span></div>
         <div class="index-bar-row"><span>Social control</span><div class="index-bar"><span style="width:60%"></span></div><span>6</span></div>
       </div>
-      <a class="index-why" href="#">Why 67? →</a>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="essays">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <div class="section-num">01 / ESSAYS</div>
-        <h2 class="section-title">Long-form</h2>
-      </div>
-      <div class="section-note">THE CORE OF THE SITE — NOT A BLOG, A RECORD</div>
-    </div>
-    <div class="essay-grid">
-      <div class="featured-essay">
-        <div class="meta"><span>FEATURED</span><span>18 MIN READ</span><span>LANGUAGE</span></div>
-        <h3>Newspeak Was Never Fiction — It Was a Design Spec</h3>
-        <p>Orwell wrote Newspeak as satire: a language engineered to make certain thoughts impossible to think. The appendix reads like documentation. Seventy-odd years on, the design spec looks less like a warning and more like a roadmap — followed, in pieces, by people who never read the book.</p>
-        <a class="read-link" href="#">Read the file →</a>
-      </div>
-      <div class="side-essays">
-        <div class="side-essay">
-          <div class="meta">SURVEILLANCE — 9 MIN</div>
-          <h4>The Telescreen Didn't Need a Screen</h4>
-          <p>It needed a battery and a signal. We supplied both, voluntarily, and called it convenience.</p>
-        </div>
-        <div class="side-essay">
-          <div class="meta">CENSORSHIP — 12 MIN</div>
-          <h4>Fahrenheit 451 Got the Method Wrong</h4>
-          <p>Bradbury imagined burning. The actual mechanism turned out to be quieter — nobody had to ban a book that nobody could find.</p>
-        </div>
-        <div class="side-essay">
-          <div class="meta">ORWELL — 7 MIN</div>
-          <h4>What Orwell Actually Believed</h4>
-          <p>Not what the political left or right claims he believed this week. What he wrote down, in order, with dates.</p>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -187,7 +150,7 @@
   <div class="wrap">
     <div class="section-head">
       <div>
-        <div class="section-num">02 / THE CANON</div>
+        <div class="section-num">01 / THE CANON</div>
         <h2 class="section-title">Dossiers, not book reports</h2>
       </div>
       <div class="section-note">12 BOOKS FILED — TAP A FILE TO DECLASSIFY IT</div>
@@ -214,7 +177,7 @@
             <div class="metric"><span>Social control</span><div class="bar"><span style="width:85%"></span></div><span class="val">8</span></div>
             <div class="flip-rule"></div>
             <div class="dossier-mech"><span>PRIMARY MECHANISM</span>Control of reality itself</div>
-            <a class="flip-link" href="/books/1984.html">Full file + video →</a>
+            <a class="flip-link" href="/books/1984.html">Full file →</a>
           </div>
         </div>
       </div>
@@ -239,7 +202,7 @@
             <div class="metric"><span>Social control</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
             <div class="flip-rule"></div>
             <div class="dossier-mech"><span>PRIMARY MECHANISM</span>Consent, manufactured through comfort</div>
-            <a class="flip-link" href="/books/brave-new-world.html">Full file + video →</a>
+            <a class="flip-link" href="/books/brave-new-world.html">Full file →</a>
           </div>
         </div>
       </div>
@@ -264,7 +227,7 @@
             <div class="metric"><span>Social control</span><div class="bar"><span style="width:100%"></span></div><span class="val">10</span></div>
             <div class="flip-rule"></div>
             <div class="dossier-mech"><span>PRIMARY MECHANISM</span>Visibility as the only law</div>
-            <a class="flip-link" href="/books/we.html">Full file + video →</a>
+            <a class="flip-link" href="/books/we.html">Full file →</a>
           </div>
         </div>
       </div>
@@ -278,7 +241,7 @@
   <div class="wrap">
     <div class="section-head">
       <div>
-        <div class="section-num">03 / SURVEILLANCE NOTES</div>
+        <div class="section-num">02 / SURVEILLANCE NOTES</div>
         <h2 class="section-title">The present, annotated</h2>
       </div>
       <div class="section-note">SHORT DISPATCHES LINKING FICTION TO THIS WEEK</div>
@@ -293,11 +256,10 @@
 <footer>
   <div class="wrap">
     <div class="footer-inner">
-      <div class="footer-line">JORJOR WEL // MINISTRY OF REALITY<br>ESSAYS / THE CANON / SURVEILLANCE NOTES / READING LISTS / ORWELL / ABOUT</div>
+      <div class="footer-line">JORJOR WEL // MINISTRY OF REALITY<br>THE CANON / SURVEILLANCE NOTES / READING LISTS / ORWELL / ABOUT</div>
       <div class="footer-links">
         <a href="/lists.html">Reading Lists</a>
         <a href="/about.html">About</a>
-        <a href="#">Sources</a>
       </div>
     </div>
     <div class="footer-quiet">Fiction warned us. This is the record of whether we listened.</div>

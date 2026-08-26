@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-08-26",
+    "text": "Apple has sent threat notifications to users it suspects have been targeted by spyware since 2021, alerting them via email, iMessage, and account banners — a system Access Now has documented as a key tool for identifying <b>state-sponsored spyware campaigns</b> against journalists, activists, and others.",
+    "tag": "SURVEILLANCE",
+    "source_name": "Access Now",
+    "source_url": "https://www.accessnow.org/apple-threat-notifications-and-spyware/?pk_campaign=feed&pk_kwd=apple-threat-notifications-and-spyware"
+  },
+  {
     "date": "2026-08-20",
     "text": "Placeholder entry — replace once the automated feed is live. Real dispatches will appear here, each with a source link.",
     "tag": "System",

@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-09-09",
+    "text": "Freedom House has adopted the case of Tatiana Kouzina, a Belarusian civil society researcher imprisoned by the Lukashenka government, which the organization describes as systematically <b>imprisoning independent experts and dissenting voices</b> to eliminate credible sources of information outside state control.",
+    "tag": "CENSORSHIP",
+    "source_name": "Freedom House",
+    "source_url": "https://freedomhouse.org/article/freedom-house-adopts-case-imprisoned-belarusian-civil-society-expert-tatiana-kouzina"
+  },
+  {
     "date": "2026-08-26",
     "text": "Apple has sent threat notifications to users it suspects have been targeted by spyware since 2021, alerting them via email, iMessage, and account banners — a system Access Now has documented as a key tool for identifying <b>state-sponsored spyware campaigns</b> against journalists, activists, and others.",
     "tag": "SURVEILLANCE",

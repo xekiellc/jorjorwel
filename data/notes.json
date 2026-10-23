@@ -1,5 +1,19 @@
 [
   {
+    "date": "2026-10-22",
+    "text": "Freedom House documents two apparent transnational repression incidents in Southeast Asia: a Laotian asylum seeker vanished near Bangkok with an alleged $8,000 bounty circulating online, while <b>three Vietnamese activists were abducted from Cambodia and returned to Vietnam</b> to face terrorism investigations — two holding Western residency or citizenship.",
+    "tag": "SURVEILLANCE",
+    "source_name": "Freedom House",
+    "source_url": "https://freedomhouse.org/article/tnr-watch-enduring-problem-transnational-repression-southeast-asia"
+  },
+  {
+    "date": "2026-10-22",
+    "text": "Freedom House's annual report finds global internet freedom has declined for 16 consecutive years, with authoritarian governments increasingly using AI-related laws, age-verification requirements, and network isolation measures to restrict online access and expression across 38 assessed countries.",
+    "tag": "CENSORSHIP",
+    "source_name": "Freedom House",
+    "source_url": "https://freedomhouse.org/article/new-report-authoritarian-internet-controls-drive-16th-consecutive-year-decline-global"
+  },
+  {
     "date": "2026-10-20",
     "text": "Access Now reports that <b>indefinite internet shutdowns</b> are increasing year over year, with governments and other actors cutting entire populations off from connectivity with no stated endpoint or restoration plan.",
     "tag": "CENSORSHIP",
